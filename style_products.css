@@ -1,0 +1,331 @@
+/* ==========================================================================
+   1. БАЗОВІ СТИЛІ ТА ОБНУЛЕННЯ
+   ========================================================================== */
+   html { font-size: 16px; }
+   body {
+       margin: 0; padding: 0; box-sizing: border-box;
+       font-family: 'Arial', sans-serif; color: #333333;
+       background-color: #ffffff; overflow-x: hidden;
+   }
+   *, *::before, *::after { box-sizing: inherit; }
+   
+   /* ==========================================================================
+      2. ШАПКА ТА HERO SECTION
+      ========================================================================== */
+   .products-hero {
+       background-repeat: no-repeat;
+       background-position: center;
+       background-size: cover;
+       background-color: rgba(0, 0, 0, 0.25);
+       background-blend-mode: multiply;
+       min-height: 40vh;
+       display: flex;
+       flex-direction: column;
+   }
+   .transparent-header { position: fixed;z-index: 5;width: 100vw;display: flex; justify-content: space-between; align-items: center;
+    height: 10vh; min-height: 60px; background-color: #ffffff; padding: 0 5%;}
+   .header-left, .header-right { display: flex; align-items: center; gap: 20px; }
+   .logo-mini { width: 65px; height: auto; }
+   .catalog-link { color: #ffffff; text-decoration: none; font-size: 0.875rem; font-weight: bold; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+   .lang-switch { color: #ffffff; font-size: 0.875rem; }
+   .lang-switch a { text-decoration: none; color: #e0e0e0; }
+   .lang-switch .active-lang { font-weight: bold; color: #ffffff; }
+   
+   .products-title-container { text-align: center; color: #ffffff; margin-top: auto; margin-bottom: auto; }
+   .products-title-container h1 { font-size: 2.5rem; font-weight: normal; letter-spacing: 4px; margin: 0 0 15px 0; }
+   .title-line { width: 250px; height: 1px; background-color: rgba(255, 255, 255, 0.5); margin: 0 auto; }
+   
+   /* ==========================================================================
+      3. СЕКЦІЯ КАТАЛОГУ З ВИПАДАЮЧИМ ФІЛЬТРОМ КАТЕГОРІЙ
+      ========================================================================== */
+   .catalog-section {
+       padding: 30px 0 80px 0;
+       background-color: #ffffff;
+       position: relative;
+   }
+   
+   /* Смуга з круглою зеленою кнопкою-тригером фільтра */
+   .catalog-filter-bar {
+       max-width: 1140px;
+       margin: 0 auto 30px auto;
+       padding: 0 20px;
+       display: flex;
+       justify-content: flex-start;
+       border-bottom: 1px solid #6AB354;
+       padding-bottom: 15px;
+   }
+   
+   .category-trigger-btn {
+       width: 45px;
+       height: 45px;
+       background-color: #43812b; /* Еталонний глибокий матовий колір кнопки */
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       cursor: pointer;
+       transition: background-color 0.2s;
+       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+   }
+   
+   .category-trigger-btn:hover {
+       background-color: #6AB354;
+   }
+   
+   .category-trigger-btn img {
+       width: 20px;
+       height: 24px;
+   }
+   
+   .catalog-container {
+       max-width: 1140px;
+       margin: 0 auto;
+       padding: 0 20px;
+       display: flex;
+       position: relative; /* База для абсолютного випадання меню */
+   }
+   
+   /* 2. ПАНЕЛЬ ВНУТРІШНЬОГО ВИПАДАЮЧОГО МЕНЮ КАТЕГОРІЙ */
+   .product-categories-dropdown {
+       position: absolute;
+       top: -15px;
+       left: 20px; /* Позиція чітко під кнопкою */
+       width: 300px;
+       background-color: #f8f9f7; /* Світло-сіре тло випадаючої плашки */
+       border: 1px solid #e0e4de;
+       border-radius: 6px;
+       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+       padding: 25px;
+       z-index: 50;
+       box-sizing: border-box;
+       display: none; /* Сховано за замовчуванням */
+   }
+   
+   .product-categories-dropdown.show-categories {
+       display: block; /* Поява при активації через JS */
+   }
+   
+   .dropdown-branches { list-style: none; padding: 0; margin: 0; }
+   .branch-item { margin-bottom: 20px; }
+   
+   .branch-toggle {
+       font-size: 1.1rem; font-weight: normal; color: #8CC63F; /* Салатово-зелений відтінок тексту головних гілок */
+       cursor: pointer; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.5px;
+   }
+   
+   .arrow-indicator { font-size: 0.7rem; color: #8CC63F; transition: transform 0.2s; }
+   
+   /* Підменю підкатегорій */
+   .dropdown-submenu { list-style: none; padding-left: 15px; margin-top: 10px; display: none; }
+   .branch-item.active-branch .dropdown-submenu { display: block; }
+   .branch-item.active-branch .arrow-indicator { transform: rotate(180deg); }
+   
+   .sub-category-link { font-size: 1rem; color: #6AB354; padding: 6px 0; cursor: pointer; transition: font-weight 0.1s; }
+   .sub-category-link:hover, .sub-category-link.active-link { font-weight: bold; }
+   
+   /* Зона контенту товарів праворуч */
+   .catalog-display-view {
+       width: 100%; /* Відступ зліва, що звільняє простір під плашку меню */
+       box-sizing: border-box;
+       text-align: left;
+       padding: 0 10% ;
+   }
+   
+   .category-view-title {
+       color: #6AB354; font-size: 1.5rem; font-weight: normal;
+       margin-top: 0; margin-bottom: 35px; border-bottom: 1px solid #e2ebd9; padding-bottom: 12px;
+       text-align: center;
+   }
+   
+   .products-showcase-wrapper { display: flex; gap: 30px; width: 100%;justify-content: center; }
+   
+   .showcase-item-card {
+     background-color: #ffffff;
+       border: 1px solid #6AB354; border-radius: 8px; padding: 20px;
+       box-sizing: border-box; text-align: center; box-shadow: 0 5px 20px rgba(106, 179, 84, 0.03);
+   }
+   
+   .card-img-holder { width: 100%; height: 180px; border-radius: 6px; overflow: hidden; margin-bottom: 15px; }
+   .card-img-holder img { width: 200px; height: 200px; object-fit: cover; border-radius: 10px;}
+   .card-label { font-size: 0.95rem; font-weight: bold; color: #555555; text-transform: uppercase; }
+   
+   /* ==========================================================================
+      4. ЗАМОРОЖЕНА ПРОДУКЦІЯ (СТАТИЧНИЙ БЛОК-ВІТРИНА)
+      ========================================================================== */
+   .frozen-showcase-section { padding: 60px 0; background-color: #fcfcfc; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; }
+   .showcase-container { max-width: 1140px; margin: 0 auto; padding: 0 20px; text-align: center; }
+   .global-section-title { color: #6AB354; font-size: 1.8rem; font-weight: normal; margin-top: 0; margin-bottom: 40px; letter-spacing: 1px; position: relative; display: inline-block; }
+   .global-section-title::after { content: ''; position: absolute; bottom: -10px; left: 25%; width: 50%; height: 2px; background-color: #6AB354; }
+   
+   .showcase-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 20px; }
+   .showcase-card {
+       background-color: #ffffff; border: 1px solid #e2ebd9; border-radius: 8px; padding: 25px 15px;
+       box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+   }
+   .showcase-img-wrap { width: 110px; height: 110px; display: flex; align-items: center; justify-content: center; }
+   .showcase-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+   .showcase-card h3 { font-size: 0.85rem; color: #555555; margin: 0; line-height: 1.4; font-weight: bold; letter-spacing: 0.3px; }
+   
+   /* ==========================================================================
+      5. СЕКЦІЯ РОЗДРІБНІ БРЕНДИ
+      ========================================================================== */
+   .retail-brands-section { padding: 60px 0 100px 0; background-color: #ffffff; text-align: center; }
+   .retail-container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+   .brands-flex-wrap { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
+   
+   .brand-show-box {
+       width: 280px; background-color: #ffffff; border: 1px solid #e2ebd9; border-radius: 8px;
+       padding: 40px 20px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+   }
+   .brand-logo-holder { height: 90px; display: flex; align-items: center; justify-content: center; }
+   .brand-logo-holder img { max-height: 100%; width: auto; }
+   .brand-show-box span { font-size: 0.95rem; font-weight: bold; color: #777777; letter-spacing: 0.5px; }
+   
+   /* ==========================================================================
+      6. ГОЛОВНЕ МЕНЮ САЙТУ (БУРГЕР НАВІГАЦІЇ)
+      ========================================================================== */
+      .nav { display: block; position: fixed; /* Краще fixed для повноекранного меню */
+        top: 0; right: 0; width: 28vw; height: 100vh; background-color: #f8f8f8; z-index: 40; /* Початковий стан — сховано */
+        transform: translateX(100%); /* Анімація закриття (спрацює, коли приберете клас .open) */
+        animation: closeNav 750ms ease forwards; }
+    .nav.open { /* Анімація відкриття */
+        animation: openNav 750ms ease forwards; }
+    /* Анімація появи */
+    @keyframes openNav {
+     from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+     }
+    /* Анімація зникнення */
+    @keyframes closeNav {
+     from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+     }
+    .nav { position: fixed; top: 0; right: 0; width: 28vw; height: 100vh; background-color: #FFFFFF; z-index: 40; padding: 30px; box-sizing: border-box; display: flex; flex-direction: column; color: #8CC63F; /* Зелений колір тексту з макета */
+        font-family: 'Roboto', sans-serif; transform: translateX(100%); transition: transform 0.5s ease; }
+    .nav.open { transform: translateX(0); }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); /* Напівпрозорий чорний колір */
+        z-index: 30; /* Менше, ніж у .nav (який має 100), але більше, ніж у контенту */
+        opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
+    /* Стан, коли оверлей активний */
+    .overlay.open { opacity: 1; visibility: visible; }
+    /* Хедер меню (іконки та мови) */
+    .nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+    .lang-switch-mobile { font-size: 14px; font-weight: bold; }
+    /* Пункти меню */
+    .nav-menu { list-style: none; padding: 0; margin: 0; }
+    .nav-menu li { opacity: 0; /* Спочатку невидимі */
+        transform: translateX(100px); /* Зміщені вправо */ }
+    .nav.open .nav-menu li { animation: slideIn 0.5s ease forwards; }
+    @keyframes slideIn {
+     to { opacity: 1; transform: translateX(0); }
+     }
+    /* Каскадна поява (затримка для кожного пункту) */
+    .nav.open .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+    .nav.open .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
+    .nav.open .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
+    .nav.open .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
+    .nav.open .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
+    .nav.open .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
+    .nav.open .nav-menu li:nth-child(7) { animation-delay: 0.7s; }
+    .nav.open .nav-menu li:nth-child(8) { animation-delay: 0.8s; }
+    .nav-menu > li { font-size: 24px; margin-bottom: 15px; text-transform: uppercase; cursor: pointer; align-items: center; gap: 10px; }
+    nav a { color: #8CC63F; text-decoration: none; }
+    .arrow { font-size: 16px; }
+    /* Підменю */
+    .production, .news { display: none; list-style: none; }
+    .production li, .news li { margin: 10px 20px 10px ; }
+    .production.open, .news.open { display:contents; text-transform: capitalize; }
+    .arrow-open-production.active,.arrow-open-news.active { transform: rotate(90deg); /* Або 90deg, залежно від макета */ }
+    .submenu li { font-size: 20px; margin-bottom: 10px; text-transform: none; /* Fresh, Frozen пишуться не капсом */ }
+    /* Контакти внизу меню */
+    .nav-footer { margin-top: auto; font-size: 13px; font-weight: bold; }
+    .nav-divider { height: 1px; background-color: #8CC63F; margin-bottom: 25px; opacity: 0.5; }
+    .footer-contacts-row { display: flex; justify-content: space-between; line-height: 1.8; }
+    .email { margin-top: 5px; }
+    .regions { text-align: right; font-weight: normal; }
+   .home-btn { position: absolute; transform: translateY(-50%); right: 70px; width: 24px; height: auto; cursor: pointer; z-index: 99; }
+   .burger-menu { z-index: 1000; position: relative; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+   .burger-menu.active { position: fixed; top: 27px; right: 30px; }
+   
+   .burger-menu span, .burger-menu::before, .burger-menu::after { content: ''; position: absolute; height: 2px; width: 24px; background-color: #6AB354; transition: transform 0.3s, opacity 0.3s; }
+   .burger-menu::before { transform: translateY(-8px); }
+   .burger-menu::after { transform: translateY(8px); }
+   .burger-menu.active span { opacity: 0; }
+   .burger-menu.active::before { transform: rotate(45deg); }
+   .burger-menu.active::after { transform: rotate(-45deg); }
+   
+   .nav-menu { list-style: none; padding: 0; margin: 0; }
+   .nav-menu > li { font-size: 1.25rem; margin-bottom: 20px; text-transform: uppercase; }
+   .nav a { color: #8CC63F; text-decoration: none; }
+   .nav-footer { margin-top: auto; font-size: 0.8rem; }
+   .nav-divider { height: 1px; background-color: #8CC63F; margin-bottom: 20px; opacity: 0.3; }
+   .footer-contacts-row { display: flex; justify-content: space-between; }
+   
+   /* ==========================================================================
+      7. ГОЛОВНИЙ ФУТЕР
+      ========================================================================== */
+   .last { background-image: url("img/footer-bg.png"); background-size: cover; background-position: center; color: white; position: relative; overflow: hidden; }
+   .last::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.0) 100%); z-index: 1; }
+   .footer-container { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
+   .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; margin-bottom: 40px; }
+   .footer-logo img { width: 100%; max-width: 220px; }
+   .contact-form { background: none; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 15px; }
+   .contact-form input { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.2); padding: 12px; color: white; border-radius: 4px; }
+   .contact-form input::placeholder { color: #e0e0e0; font-size: 0.95rem; }
+   .form-agreement { display: flex; align-items: flex-start; gap: 10px; }
+   .form-agreement input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; margin: 0; }
+   .form-agreement label { font-size: 0.75rem; line-height: 1.4; color: #e0e0e0; }
+   .submit-btn { background: transparent; border: 1px solid white; color: white; padding: 12px; cursor: pointer; margin-top: 10px; width: 100%; max-width: 200px; font-weight: bold; transition: background 0.3s; }
+   .submit-btn:hover { background-color: #ffffff; color: #333333; }
+   .footer-bottom { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 1fr; gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; font-size: 0.95rem; }
+   .footer-info p { margin: 0 0 10px 0; font-size: 1.3rem; font-weight: bold; }
+   .footer-info address { font-style: normal; line-height: 1.5; color: #ccc; }
+   .footer-nav { display: flex; justify-content: space-between; gap: 15px; }
+   .footer-nav ul { list-style: none; padding: 0; margin: 0; }
+   .footer-nav a { color: white; text-decoration: none; display: block; margin-bottom: 12px; opacity: 0.8; font-size: 0.9rem; }
+   .footer-nav a:hover { opacity: 1; color: #6AB354; }
+   .footer-contacts p { margin: 0 0 10px 0; font-weight: bold; }
+   .socials-footer { display: flex; gap: 12px; margin-top: 20px; }
+   .socials-footer img { width: 24px; height: 24px; opacity: 0.8; }
+   .email-footer a { color: #f8f8f8; text-decoration: none; }
+   .footer-copyright { background-color: rgba(0, 0, 0, 0.8); min-height: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); padding: 10px 5%; }
+   .footer-copyright a { color: #f8f8f8; }
+   
+   /* ==========================================================================
+      8. АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ (< 768px)
+      ========================================================================== */
+   @media (max-width: 768px) {
+       html { font-size: 14px; }
+       .catalog-link { display: none; }
+       
+       .catalog-container { flex-direction: column; gap: 30px; }
+       .product-categories-dropdown { width: calc(100% - 40px); left: 20px; z-index: 100; }
+       
+       .catalog-display-view { padding-left: 0; }
+       .products-showcase-wrapper { flex-direction: column; gap: 20px; }
+       .showcase-item-card { width: 100%; }
+       
+       /* Скрол-стрічка для карт виставки заморозки на мобільному */
+       .showcase-grid { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; }
+       .showcase-card { width: 150px; flex-shrink: 0; }
+       
+       .brands-flex-wrap { flex-direction: column; align-items: center; gap: 20px; }
+   
+       .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+       .contact-form { max-width: 100%; }
+       .submit-btn { max-width: 100%; }
+       .footer-bottom { grid-template-columns: 100%; text-align: center; gap: 35px; }
+       .footer-nav { flex-direction: column; gap: 25px; }
+       .socials-footer { justify-content: center; }
+       .footer-copyright { flex-direction: column; gap: 10px; text-align: center; }
+   }
+   @media (max-width: 650px){
+    .lang-switch{
+     display: none;
+    }
+    .burger-menu{
+     right: 200px;
+    }
+    .nav.open{
+     width: 100vw;   }
+  }

@@ -1,0 +1,239 @@
+/* --- БАЗОВІ СТИЛІ ТА ОБНУЛЕННЯ --- */
+html { font-size: 16px; }
+body {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Arial', sans-serif; color: #333333;
+    background-color: #ffffff; overflow-x: hidden;
+}
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Флекс-структура, щоб утримувати футер знизу при малій кількості контенту */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- МІНІМАЛІСТИЧНИЙ ХЕДЕР --- */
+.mission-header {position: fixed;z-index: 5;width: 100vw; display: flex; justify-content: space-between; align-items: center; height: 10vh; min-height: 60px; background-color: #ffffff; padding: 0 5%;
+}
+.header-left, .header-right { display: flex; align-items: center; gap: 20px; }
+.logo-mini { width: 65px; height: auto; }
+.catalog-link {
+    color: #6AB354; text-decoration: none; font-size: 0.875rem;
+    font-weight: bold; border-bottom: 2px solid #6AB354; padding-bottom: 2px;
+}
+.lang-switch { color: #6AB354; font-size: 0.875rem; }
+.lang-switch a { text-decoration: none; color: #999999; }
+.lang-switch .active-lang { font-weight: bold; color: #6AB354; }
+
+/* --- ЦЕНТРАЛЬНА СЕКЦІЯ --- */
+.mission-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    background-color: #ffffff;
+}
+.mission-container {
+    max-width: 850px;
+    width: 100%;
+    text-align: center;
+}
+.mission-title {
+    color: #6AB354;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+.mission-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background-color: #6AB354;
+}
+.mission-text-block {
+    margin-top: 20px;
+}
+.highlight-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 50px;
+}
+
+/* Сітка цінностей (опціонально для наповнення контентом у стилі макета) */
+.values-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+}
+.value-item {
+    width: 31%;
+    text-align: left;
+}
+.value-item h3 {
+    color: #6AB354;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    border-left: 3px solid #6AB354;
+    padding-left: 10px;
+}
+.value-item p {
+    color: #666666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- БОКОВЕ МЕНЮ ТА НАВІГАЦІЯ --- */
+.nav { display: block; position: fixed; /* Краще fixed для повноекранного меню */
+    top: 0; right: 0; width: 28vw; height: 100vh; background-color: #f8f8f8; z-index: 40; /* Початковий стан — сховано */
+    transform: translateX(100%); /* Анімація закриття (спрацює, коли приберете клас .open) */
+    animation: closeNav 750ms ease forwards; }
+.nav.open { /* Анімація відкриття */
+    animation: openNav 750ms ease forwards; }
+/* Анімація появи */
+@keyframes openNav {
+ from { transform: translateX(100%); }
+to { transform: translateX(0); }
+ }
+/* Анімація зникнення */
+@keyframes closeNav {
+ from { transform: translateX(0); }
+to { transform: translateX(100%); }
+ }
+.nav { position: fixed; top: 0; right: 0; width: 28vw; height: 100vh; background-color: #FFFFFF; z-index: 40; padding: 30px; box-sizing: border-box; display: flex; flex-direction: column; color: #8CC63F; /* Зелений колір тексту з макета */
+    font-family: 'Roboto', sans-serif; transform: translateX(100%); transition: transform 0.5s ease; }
+.nav.open { transform: translateX(0); }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); /* Напівпрозорий чорний колір */
+    z-index: 30; /* Менше, ніж у .nav (який має 100), але більше, ніж у контенту */
+    opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
+/* Стан, коли оверлей активний */
+.overlay.open { opacity: 1; visibility: visible; }
+/* Хедер меню (іконки та мови) */
+.nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+.lang-switch-mobile { font-size: 14px; font-weight: bold; }
+.home-btn { transform: translateX(-50px);width: 20px;height: 20px; }
+/* Пункти меню */
+.nav-menu { list-style: none; padding: 0; margin: 0; }
+.nav-menu li { opacity: 0; /* Спочатку невидимі */
+    transform: translateX(100px); /* Зміщені вправо */ }
+.nav.open .nav-menu li { animation: slideIn 0.5s ease forwards; }
+@keyframes slideIn {
+ to { opacity: 1; transform: translateX(0); }
+ }
+/* Каскадна поява (затримка для кожного пункту) */
+.nav.open .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+.nav.open .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
+.nav.open .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
+.nav.open .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
+.nav.open .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
+.nav.open .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
+.nav.open .nav-menu li:nth-child(7) { animation-delay: 0.7s; }
+.nav.open .nav-menu li:nth-child(8) { animation-delay: 0.8s; }
+.nav-menu > li { font-size: 24px; margin-bottom: 15px; text-transform: uppercase; cursor: pointer; align-items: center; gap: 10px; }
+nav a { color: #8CC63F; text-decoration: none; }
+.arrow { font-size: 16px; }
+/* Підменю */
+.production, .news { display: none; list-style: none; }
+.production li, .news li { margin: 10px 20px 10px ; }
+.production.open, .news.open { display:contents; text-transform: capitalize; }
+.arrow-open-production.active,.arrow-open-news.active { transform: rotate(90deg); /* Або 90deg, залежно від макета */ }
+.submenu li { font-size: 20px; margin-bottom: 10px; text-transform: none; /* Fresh, Frozen пишуться не капсом */ }
+/* Контакти внизу меню */
+.nav-footer { margin-top: auto; font-size: 13px; font-weight: bold; }
+.nav-divider { height: 1px; background-color: #8CC63F; margin-bottom: 25px; opacity: 0.5; }
+.footer-contacts-row { display: flex; justify-content: space-between; line-height: 1.8; }
+.email { margin-top: 5px; }
+.regions { text-align: right; font-weight: normal; }.burger-menu {right: 450px;top:36px; z-index: 1000; position: fixed; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.burger-menu.active { position: fixed; top: 27px; right: 20px; }
+
+.burger-menu span, .burger-menu::before, .burger-menu::after { content: ''; position: absolute; height: 2px; width: 24px; background-color: #6AB354; transition: transform 0.3s, opacity 0.3s; }
+.burger-menu::before { transform: translateY(-8px); }
+.burger-menu::after { transform: translateY(8px); }
+.burger-menu.active span { opacity: 0; }
+.burger-menu.active::before { transform: rotate(45deg); }
+.burger-menu.active::after { transform: rotate(-45deg); }
+
+.nav-menu { list-style: none; padding: 0; margin: 0; }
+.nav-menu > li { font-size: 1.25rem; margin-bottom: 20px; text-transform: uppercase; }
+.nav a { color: #8CC63F; text-decoration: none; }
+.production, .news { display: none; width: 100%; list-style: none; padding-left: 15px; margin-top: 10px; }
+.production.open, .news.open { display: block; }
+.arrow-open-production, .arrow-open-news { cursor: pointer; transition: transform 0.3s; }
+.arrow-open-production.active, .arrow-open-news.active { transform: rotate(90deg); }
+.nav-footer { margin-top: auto; font-size: 0.8rem; }
+.nav-divider { height: 1px; background-color: #8CC63F; margin-bottom: 20px; opacity: 0.3; }
+.footer-contacts-row { display: flex; justify-content: space-between; }
+
+/* --- ГОЛОВНИЙ ФУТЕР --- */
+.last { background-image: url("img/footer-bg.png"); background-size: cover; background-position: center; color: white; position: relative; overflow: hidden; }
+.last::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.0) 100%); z-index: 1; }
+.footer-container { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; margin-bottom: 40px; }
+.footer-logo img { width: 100%; max-width: 220px; }
+.contact-form { background: none; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 15px; }
+.contact-form input { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.2); padding: 12px; color: white; border-radius: 4px; }
+.contact-form input::placeholder { color: #e0e0e0; font-size: 0.95rem; }
+.form-agreement { display: flex; align-items: flex-start; gap: 10px; }
+.form-agreement input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; margin: 0; }
+.form-agreement label { font-size: 0.75rem; line-height: 1.4; color: #e0e0e0; }
+.submit-btn { background: transparent; border: 1px solid white; color: white; padding: 12px; cursor: pointer; margin-top: 10px; width: 100%; max-width: 200px; font-weight: bold; transition: background 0.3s; }
+.submit-btn:hover { background-color: #ffffff; color: #333333; }
+.footer-bottom { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 1fr; gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; font-size: 0.95rem; }
+.footer-info p { margin: 0 0 10px 0; font-size: 1.3rem; font-weight: bold; }
+.footer-info address { font-style: normal; line-height: 1.5; color: #ccc; }
+.footer-nav { display: flex; justify-content: space-between; gap: 15px; }
+.footer-nav ul { list-style: none; padding: 0; margin: 0; }
+.footer-nav a { color: white; text-decoration: none; display: block; margin-bottom: 12px; opacity: 0.8; font-size: 0.9rem; }
+.footer-nav a:hover { opacity: 1; color: #6AB354; }
+.footer-contacts p { margin: 0 0 10px 0; font-weight: bold; }
+.socials-footer { display: flex; gap: 12px; margin-top: 20px; }
+.socials-footer img { width: 24px; height: 24px; opacity: 0.8; }
+.email-footer a { color: #f8f8f8; text-decoration: none; }
+.footer-copyright { background-color: rgba(0, 0, 0, 0.8); min-height: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); padding: 10px 5%; }
+.footer-copyright a { color: #f8f8f8; }
+
+/* ==========================================================================
+   --- АДАПТИВНІСТЬ (МЕДІА-ЗАПИТ < 768px) ---
+   ========================================================================== */
+@media (max-width: 768px) {
+    html { font-size: 14px; }
+    .catalog-link { display: none; }
+    
+    .mission-main { padding: 50px 15px; }
+    .mission-title { font-size: 1.8rem; }
+    .highlight-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 35px; }
+    
+    .values-grid { flex-direction: column; gap: 30px; }
+    .value-item { width: 100%; text-align: center; }
+    .value-item h3 { border-left: none; border-bottom: 2px solid #6AB354; padding-left: 0; padding-bottom: 5px; display: inline-block; }
+
+    .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+    .contact-form { max-width: 100%; }
+    .submit-btn { max-width: 100%; }
+    .footer-bottom { grid-template-columns: 100%; text-align: center; gap: 35px; }
+    .footer-nav { flex-direction: column; gap: 25px; }
+    .socials-footer { justify-content: center; }
+    .footer-copyright { flex-direction: column; gap: 10px; text-align: center; }
+}
+@media (max-width: 650px){
+    .lang-switch{
+     display: none;
+    }
+    .burger-menu{
+     right: 200px;
+    }
+    .nav.open{
+     width: 100vw;   }
+  }

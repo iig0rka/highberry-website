@@ -1,0 +1,327 @@
+/* --- БАЗОВІ СТИЛІ --- */
+html { font-size: 16px; }
+body {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Arial', sans-serif; color: #333333;
+    background-color: #ffffff; overflow-x: hidden;
+}
+*, *::before, *::after { box-sizing: inherit; }
+
+.header {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 10vh; min-height: 60px; background-color: #ffffff; padding: 0 5%;
+}
+.header-left, .header-right { display: flex; align-items: center; gap: 20px; }
+.logo-mini { width: 65px; height: auto; }
+.catalog-link { color: #6AB354; text-decoration: none; font-size: 0.875rem; font-weight: bold; border-bottom: 2px solid #6AB354; padding-bottom: 2px; }
+.lang-switch { color: #6AB354; font-size: 0.875rem; }
+.lang-switch a { text-decoration: none; color: #999999; }
+.lang-switch .active-lang { font-weight: bold; color: #6AB354; }
+
+/* --- ГОЛОВНА СЕКЦІЯ СЛАЙДЕРА ГАЛЕРЕЇ --- */
+.gallery-slider-section {
+    background-color: #ffffff;
+    padding: 20px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-slider-container {
+    position: relative;
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.slider-window {
+    width: 100%;
+    height: 60vh; /* Оптимальна висота великого фото */
+    min-height: 380px;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-slide {
+    min-width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Логотип бренду поверх картинок у правому верхньому кутку */
+.slide-brand-logo {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 140px;
+    height: auto;
+    z-index: 3;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+/* Напівпрозора темна смуга опису внизу фото */
+.slider-control-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Темне затемнення */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.slide-description-text {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+/* Стильні сині стрілки навігації */
+.gallery-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.gallery-arrow:hover {
+    transform: scale(1.15);
+}
+
+.gallery-arrow img {
+    height: 24px; /* Колір стрілок підтягується з вашого файлу arrow-left-blue.svg */
+}
+
+/* --- НАВІГАЦІЙНА ПАНЕЛЬ: ТАЙМЛАЙН ДОТСІВ ДЛЯ 30 ШТ --- */
+.slider-nav-panel {
+    max-width: 1200px;
+    width: calc(100% - 40px);
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-dots-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+/* Сіро-зелена базова лінія, що з'єднує 30 дотсів */
+.timeline-dots-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #e0eed5; /* Світле кільце-тло */
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+/* Суцільна зелена лінія заповнення таймлайну до активної точки */
+.timeline-connect-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0px; /* Розраховується динамічно в JS */
+    height: 2px;
+    background-color: #6AB354; /* Фірмовий яскраво-зелений */
+    z-index: 2;
+    transform: translateY(-50%);
+    transition: width 0.4s ease;
+}
+
+.dots-scroll-container {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between; /* Рівномірний розподіл 30 точок за макетом */
+    align-items: center;
+    width: 100%;
+}
+
+/* Кастомне кільце-дотс */
+.gallery-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 2px solid #c2e29d; /* Порожнє зелене кільце */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+/* Стан активного дотса з заповненням */
+.gallery-dot.active {
+    background-color: #6AB354;
+    border-color: #6AB354;
+    transform: scale(1.1);
+}
+
+/* --- СТРІЧКА ПРЕВ'Ю-МІНІАТЮР (THUMBNAILS) --- */
+.thumbnails-strip-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Дозволяє стрічці з 30 фоток м'яко скролитись, якщо не влазять */
+    padding-bottom: 10px;
+}
+
+/* Приховуємо дефолтний скроллбар для чистого вигляду */
+.thumbnails-strip-wrapper::-webkit-scrollbar {
+    height: 4px;
+}
+.thumbnails-strip-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(106, 179, 84, 0.3);
+    border-radius: 4px;
+}
+
+.thumbnails-track {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+}
+
+/* Картка мініатюри */
+.thumb-item {
+    width: 160px;
+    height: 90px;
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    position: relative;
+    filter: brightness(0.6) grayscale(0.2); /* Легке затемнення неактивних фото як на макеті */
+    transition: filter 0.3s ease, transform 0.3s ease, border-color 0.3s;
+    border: 2px solid transparent;
+}
+
+/* Стан поточної активної мініатюри */
+.thumb-item.active-thumb, .thumb-item:hover {
+    filter: brightness(1) grayscale(0); /* Повна яскравість */
+    border-color: #6AB354;
+    transform: translateY(-2px);
+}
+
+/* --- БОКОВЕ МЕНЮ ТА НАВІГАЦІЯ --- */
+.nav {
+    position: fixed; top: 0; right: 0; width: 320px; max-width: 100vw; height: 100vh;
+    background-color: #FFFFFF; z-index: 999; padding: 30px; display: flex; flex-direction: column;
+    color: #8CC63F; transform: translateX(100%); transition: transform 0.4s ease;
+}
+.nav.open { transform: translateX(0); }
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.overlay.open { opacity: 1; visibility: visible; }
+.nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; position: relative; }
+
+.home-btn { position: absolute; top: 50%; transform: translateY(-50%); right: 45px; width: 24px; height: auto; cursor: pointer; z-index: 99; }
+.burger-menu { z-index: 1000; position: relative; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.burger-menu.active { position: fixed; top: 40px; right: 30px; }
+
+.burger-menu span, .burger-menu::before, .burger-menu::after { content: ''; position: absolute; height: 2px; width: 24px; background-color: #6AB354; transition: transform 0.3s, opacity 0.3s; }
+.burger-menu::before { transform: translateY(-8px); }
+.burger-menu::after { transform: translateY(8px); }
+.burger-menu.active span { opacity: 0; }
+.burger-menu.active::before { transform: rotate(45deg); }
+.burger-menu.active::after { transform: rotate(-45deg); }
+
+.nav-menu { list-style: none; padding: 0; margin: 0; }
+.nav-menu > li { font-size: 1.25rem; margin-bottom: 20px; text-transform: uppercase; }
+.nav a { color: #8CC63F; text-decoration: none; }
+.production, .news { display: none; width: 100%; list-style: none; padding-left: 15px; margin-top: 10px; }
+.production.open, .news.open { display: block; }
+.arrow-open-production, .arrow-open-news { cursor: pointer; transition: transform 0.3s; }
+.arrow-open-production.active, .arrow-open-news.active { transform: rotate(90deg); }
+.nav-footer { margin-top: auto; font-size: 0.8rem; }
+.nav-divider { height: 1px; background-color: #8CC63F; margin-bottom: 20px; opacity: 0.3; }
+.footer-contacts-row { display: flex; justify-content: space-between; }
+
+/* --- ГОЛОВНИЙ ФУТЕР --- */
+.last { background-image: url("img/footer-bg.png"); background-size: cover; background-position: center; color: white; position: relative; overflow: hidden; margin-top: 40px; }
+.last::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.0) 100%); z-index: 1; }
+.footer-container { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; margin-bottom: 40px; }
+.footer-logo img { width: 100%; max-width: 220px; }
+.contact-form { background: none; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 15px; }
+.contact-form input { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.2); padding: 12px; color: white; border-radius: 4px; }
+.contact-form input::placeholder { color: #e0e0e0; font-size: 0.95rem; }
+.form-agreement { display: flex; align-items: flex-start; gap: 10px; }
+.form-agreement input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; margin: 0; }
+.form-agreement label { font-size: 0.75rem; line-height: 1.4; color: #e0e0e0; }
+.submit-btn { background: transparent; border: 1px solid white; color: white; padding: 12px; cursor: pointer; margin-top: 10px; width: 100%; max-width: 200px; font-weight: bold; transition: background 0.3s; }
+.submit-btn:hover { background-color: #ffffff; color: #333333; }
+.footer-bottom { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 1fr; gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; font-size: 0.95rem; }
+.footer-info p { margin: 0 0 10px 0; font-size: 1.3rem; font-weight: bold; }
+.footer-info address { font-style: normal; line-height: 1.5; color: #ccc; }
+.footer-nav { display: flex; justify-content: space-between; gap: 15px; }
+.footer-nav ul { list-style: none; padding: 0; margin: 0; }
+.footer-nav a { color: white; text-decoration: none; display: block; margin-bottom: 12px; opacity: 0.8; font-size: 0.9rem; }
+.footer-nav a:hover { opacity: 1; color: #6AB354; }
+.footer-contacts p { margin: 0 0 10px 0; font-weight: bold; }
+.socials-footer { display: flex; gap: 12px; margin-top: 20px; }
+.socials-footer img { width: 24px; height: 24px; opacity: 0.8; }
+.email-footer a { color: #f8f8f8; text-decoration: none; }
+.footer-copyright { background-color: rgba(0, 0, 0, 0.8); min-height: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); padding: 10px 5%; }
+.footer-copyright a { color: #f8f8f8; }
+
+/* ==========================================================================
+   --- АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ (< 768px) ---
+   ========================================================================== */
+@media (max-width: 768px) {
+    html { font-size: 14px; }
+    .catalog-link { display: none; }
+    
+    .slider-window { height: 45vh; }
+    .slide-brand-logo { width: 100px; top: 15px; right: 20px; }
+    
+    .slider-control-overlay { padding: 15px; }
+    .slide-description-text { font-size: 0.85rem; padding: 0 5px; }
+    .gallery-arrow { width: 30px; height: 30px; }
+    
+    /* На маленьких екранах ховаємо дотси, бо 30 кілець не вмістяться в рядок фізично, */
+    /* залишаючи керування через стрілочки та красивий нижній скрол-стрічку фоток */
+    .timeline-dots-wrapper { display: none; }
+    
+    .thumb-item { width: 110px; height: 65px; }
+
+    .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+    .contact-form { max-width: 100%; }
+    .submit-btn { max-width: 100%; }
+    .footer-bottom { grid-template-columns: 100%; text-align: center; gap: 35px; }
+    .footer-nav { flex-direction: column; gap: 25px; }
+    .socials-footer { justify-content: center; }
+    .footer-copyright { flex-direction: column; gap: 10px; text-align: center; }
+}

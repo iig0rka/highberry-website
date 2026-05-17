@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <nav class="nav">
+        <div class="nav-header">
+            <div class="lang-switch-mobile">
+                <span class="active">UA</span> | <span>EN</span> | <span>PL</span>
+            </div>
+            <div class="nav-icons">
+                <img class="home-btn" alt="icon" src="/img/icons/home.svg"></img>
+            </div>
+        </div>
+    
+        <ul class="nav-menu">
+            <li><a href="/about.html">ПРО НАС</a></li>
+            <li><a href="/mission.html">МІСІЯ ТА ЦІННОСТІ</a></li>
+            <li><a href="/growing.html">ВИРОЩУВАННЯ</a></li>
+            <li><a href="/production.html">ВИРОБНИЦТВО</a></li>
+            <li class="has-submenu"><a href="/products.html">ПРОДУКЦІЯ</a> <img class="arrow-open-production" src="/img/icons/arrow-open.svg" alt="icon"></span>
+                <ul class="production">
+                    <li><a href="#">Fresh</a></li>
+                    <li><a href="#">Frozen</a></li>
+                    <li><a href="#">Роздрібні бренди</a></li>
+                </ul>
+            </li>
+            <li><a href="#">НОВИНИ</a> <img class="arrow-open-news" src="/img/icons/arrow-open.svg" alt="icon">
+                <ul class="news">
+                    <li><a href="/events.html">Події</a></li>
+                    <li><a href="/gallery.html">Галерея</a></li>
+                    <li><a href="/interesting.html">Корисно Та Цікаво</a></li>
+                </ul>
+            </li>
+            <li><a href="/vacancies.html">ВАКАНСІЇ</a></li>
+            <li><a href="/contacts.html">КОНТАКТИ</a></li>
+        </ul>
+    
+        <div class="nav-footer">
+            <div class="nav-divider"></div>
+            <div class="footer-contacts-row">
+                <div class="phones">
+                    <p>+380 67 560 3808</p>
+                    <p>+380 96 400 5555</p>
+                    <p class="email">high.berry@ukr.net</p>
+                </div>
+                <div class="regions">
+                    <p>для України</p>
+                    <p>для інших країн</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="hero">
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="/img/videoplayback.mp4" type="video/mp4">
+            Ваш браузер не підтримує відео тег.
+        </video>
+        <header class="header">
+            <div class="header-left">
+                <img src="/img/icons/logo.svg" alt="Highberry small logo" class="logo-mini">
+                <a href="#" class="catalog-link">КАТАЛОГ ПРОДУКЦІЇ [PDF]</a>
+            </div>
+            
+            <div class="header-right">
+                <div class="socials">
+                    <img src="img/icons/ldin.svg" alt="icon"> 
+                    <img src="img/icons/fb.svg" alt="icon">
+                    <img src="img/icons/in.svg" alt="icon">
+                    <img src="img/icons/yt.svg" alt="icon">
+                    <img src="img/icons/tt.svg" alt="icon">
+                </div>
+                <div class="lang-switch">
+                    <span>UA</span> | <a href="#">EN</a> | <a href="#">PL</a>
+                </div>
+                <div class="burger-menu"> <span></span></div>
+            </div>
+        </header>
+
+        <div class="hero-content">
+            <img src="/img/icons/logo.svg" alt="Highberry Logo" class="main-logo">
+            <h1>ВИРОЩЕНО ТА <br> ЗАМОРОЖЕНО <br> В УКРАЇНІ</h1>
+        </div>
+
+        <div class="hero-footer">
+            <button class="btn-showreel"><img src="/img/icons/play.svg" alt="icon">ДИВИТИСЯ SHOWREEL</button>
+            <div class="scroll-down">↓</div>
+        </div>
+    </section>
+    <section class="location">
+        <div class="container">
+            <h2 class="section-title">МИ ПОРУЧ</h2>
+    
+            <!-- Блок з цифрами -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/years.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>11 років</strong><br>на ринку</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/farms.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>417+ га</strong><br>сільгоспугідь</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/factory.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>2200 м²</strong><br>заводу із заморозки та переробки</div>
+                </div>
+            </div>
+    
+            <!-- Зображення карти (image_9eb51a.png) -->
+            <div class="map-wrapper">
+                <img src="img/map.png" alt="Карта експорту" class="map-img">
+            </div>
+    
+            <!-- Нижній текст у дві колонки -->
+            <div class="location-description">
+                <div class="desc-col">
+                    <p>Агровиробний комплекс «HIGHBERRY» задовольняє попит українського та європейського споживача сучасним й високоякісним продуктом абсолютної якості за рахунок власного вирощування та власного виробництва.</p>
+                </div>
+                <div class="desc-col">
+                    <p>Вигідне географічне розташування та близькість до європейського кордону дозволяють скоротити затримки часу при транспортуванні продукції до наших клієнтів в Україні та експорті до країн Європи. <a href="#" class="more-link">ДІЗНАТИСЯ БІЛЬШЕ →</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fresh">
+        <div class="fresh-container">
+            <!-- Ліва частина: Зображення -->
+            <div class="fresh-image">
+                <img src="img/strawberry.png" alt="Полуниця">
+            </div>
+    
+            <!-- Права частина: Контент -->
+            <div class="fresh-content">
+                <h2 class="fresh-title">FRESH</h2>
+                
+                <ul class="product-list fresh-list">
+                    <!-- Активний пункт -->
+                    <li class="product-item active" data-id="strawberry">
+                        <div class="product-name">ПОЛУНИЦЯ</div>
+                        <div class="product-details">
+                            <p>Площа: 54 га</p>
+                            <p>Врожайність: 1225 т</p>
+                            <p>Сорт: Хоней, Зенга Зенгана, Флоренс, Румба</p>
+                            <p>Період збору врожаю: червень-липень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>
+                    </li>
+    
+                    <!-- Інші пункти -->
+                    <li class="product-item" data-id="raspberry">
+                        <div class="product-name">МАЛИНА</div>
+                        <div class="product-details">
+                            <p>Площа 25,3 га</p>
+                            <p>Очікувана врожайність ≈ 200 т</p>
+                            <p>Сорт: Полка, Херітейдж, Полана</p>
+                            <p>Період збору врожаю: серпень-жовтень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="onion">
+                        <div class="product-name">ЦИБУЛЯ ПОРЕЙ</div>
+                        <div class="product-details">
+                            <p>Площа 1 га</p>
+                            <p>Очікувана врожайність ≈ 50 т</p>
+                            <p>Сорт: Тітус, Крептон</p>
+                            <p>Період збору врожаю: жовтень-листопад</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="cherry">
+                        <div class="product-name">ВИШНЯ</div>
+                        <div class="product-details">
+                            <p>Площа 88,2 га</p>
+                            <p>Очікувана врожайність ≈ 1000 т</p>
+                            <p>Сорт: Лутовка, Ерді, Дебрецена-Ботермо</p>
+                            <p>Період збору врожаю: липень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="broccoli">
+                        <div class="product-name">БРОКОЛІ</div>
+                        <div class="product-details">
+                            <p>Площа 45 га</p>
+                            <p>Очікувана врожайність ≈ 800 т</p>
+                            <p>Сорт: Монако, Партеон, Вавілон, Бесті, Корос, Монрело</p>
+                            <p>Період збору врожаю: червень-липень, вересень-жовтень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="cauliflower">
+                        <div class="product-name">ЦВІТНА КАПУСТА</div>
+                        <div class="product-details">
+                            <p>Площа 18 га</p>
+                            <p>Очікувана врожайність ≈ 100 т</p>
+                            <p>Сорт: Ардей</p>
+                            <p>Період збору врожаю: липень, жовтень, листопад</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="brussel">
+                        <div class="product-name">БРЮСЕЛЬСЬКА КАПУСТА</div>
+                        <div class="product-details">
+                            <p>Площа 6 га</p>
+                            <p>Очікувана врожайність ≈ 100 т</p>
+                            <p>Сорт:  Профітус, Абакус</p>
+                            <p>Період збору врожаю: вересень-жовтень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="pepper">
+                        <div class="product-name">ПЕРЕЦЬ</div>
+                        <div class="product-details">
+                            <p>Площа 7 га</p>
+                            <p>Очікувана врожайність ≈ 400 т</p>
+                            <p>Сорт: Геркулес, Абей, Амаретто, Хаскі, Вангард, Фламінго</p>
+                            <p>Період збору врожаю: серпень-вересень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="tomato">
+                        <div class="product-name">ТОМАТИ</div>
+                        <div class="product-details">
+                            <p>Площа 4 га</p>
+                            <p>Очікувана врожайність ≈ 400 т</p>
+                            <p>Сорт: Ред Скай</p>
+                            <p>Період збору врожаю: серпень-жовтень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                    <li class="product-item" data-id="carrot">
+                        <div class="product-name">МОРКВА</div>
+                        <div class="product-details">
+                            <p>Площа 10 га</p>
+                            <p>Очікувана врожайність ≈ 1000 т</p>
+                            <p>Сорт: Абако, Бангор, Болівар, Дордонь, Елеганс, Романс</p>
+                            <p>Період збору врожаю: вересень</p>
+                            <a href="/cards/strawberry.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>    
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="growing">
+        <div class="container">
+            <h2 class="section-title">ВИРОЩУВАННЯ</h2>
+    
+            <!-- Картки статистики -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/farms.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>417+ га</strong><br>сільгоспугідь</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/berry.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>1500+ тонн</strong><br>ягід</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/berry.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>1200 тонн</strong><br>овочів</div>
+                </div>
+            </div>
+    
+            <!-- Центральне зображення території -->
+            <div class="territory-wrapper">
+                <img src="img/territory.png" alt="Схема території 417 га" class="territory-img">
+            </div>
+    
+            <!-- Опис у дві колонки -->
+            <div class="location-description">
+                <div class="desc-col">
+                    <p>Агропромисловий комплекс "HIGHBERRY" постійно вдосконалює технологію вирощування культур, отримуючи максимальний обсяг врожаю з одного гектара.</p>
+                    <p>Єдиний агрономічний аналіз у кожному господарстві всієї партії гарантує продукцію, обрану на наших полях.</p>
+                </div>
+                <div class="desc-col">
+                    <p>Особливу увагу приділяємо раціональному використанню та контролю за нормами внесення добрив і засобів захисту рослин. <a href="#" class="more-link">ДІЗНАТИСЯ БІЛЬШЕ →</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="frozen">
+        <div class="frozen-container">
+            <div class="image-stack" id="frozen-stack">
+                <img src="img/berries.png" alt="Ягоди" class="stack-carusel-img active" data-id="berries">
+                <img src="img/wild.png" alt="Дикороси" class="stack-carusel-img" data-id="wild">
+                <img src="img/puree.png" alt="Пюре" class="stack-carusel-img" data-id="puree">
+                <img src="img/veggies.png" alt="Овочі" class="stack-carusel-img" data-id="veggies">
+                <img src="img/mix.png" alt="Суміші" class="stack-carusel-img" data-id="mix">
+            </div>
+    
+            <div class="frozen-content">
+                <h2 class="frozen-title">FROZEN</h2>
+                <ul class="product-list frozen-list">
+                    <li class="product-item-carusel active" data-target="berries">
+                        <div class="product-name">ЯГОДИ, ФРУКТИ</div>
+                        <div class="product-details">
+                            <p>Полуниця, малина, ожина, вишня</p>
+                            <a href="/products.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>
+                    </li>
+                    <li class="product-item-carusel" data-target="wild">
+                        <div class="product-name">ДИКОРОСИ</div>
+                        <div class="product-details">
+                            <p>Ожина, журавлина, калина, чорниця...</p>
+                            <a href="/products.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>
+                    </li>
+                    <li class="product-item-carusel" data-target="puree">
+                        <div class="product-name">ПЮРЕ</div>
+                        <div class="product-details">
+                            <p>полуничне і малинове пюре без кісточок</p>
+                            <a href="/products.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>
+                    </li>
+                    <li class="product-item-carusel" data-target="veggies">
+                        <div class="product-name">ОВОЧІ, ГРИБИ</div>
+                        <div class="product-details">
+                            <p>броколі, брюссельська капуста, цвітна капуста, болгарський перець, помідор, морква</p>
+                            <a href="/products.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>
+
+                    </li>
+
+                    <li class="product-item-carusel" data-target="mix">
+                        <div class="product-name">СУМІШІ</div>
+                        <div class="product-details">
+                            <p>суміші овочів, ягід і фруктів</p>
+                            <a href="#" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ →</a>
+                        </div>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="manufactoring">
+        <div class="container">
+            <h2 class="section-title">ВИРОБНИЦТВО</h2>
+    
+            <!-- Головна картка IQF -->
+            <div class="iqf-main-card">
+                <div class="iqf-logo">
+                    <img src="img/iqf-logo.svg" alt="IQF Logo">
+                </div>
+                <div class="iqf-text">
+                    <p>Агровиробничий комплекс "HIGHBERRY" має власний завод з переробки та заморожування ягід, фруктів, овочів, різноманітних фруктово-овочевих сумішей та ін. в промислових масштабах.</p>
+                    <p>Заморожування відбувається за технологією IQF, завдяки сучасному високотехнологічному оснащенню, що дозволяє виготовляти 50-60 т продукції на добу. <a href="#" class="more-link">ДІЗНАТИСЯ БІЛЬШЕ →</a></p>
+                </div>
+            </div>
+    
+            <!-- Картки статистики (використовуємо вже існуючий контейнер) -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/ice.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>> 2500 тонн на рік</strong><br>ЗАМОРОЖУЄМО</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/power.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>> 60 тонн на добу</strong><br>ПОТУЖНІСТЬ ВИРОБНИЦТВА</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><img src="img/icons/world.svg" alt="icon"></div>
+                    <div class="stat-text"><strong>5 країн</strong><br>ЕКСПОРТ</div>
+                </div>
+            </div>
+    
+            <h2 class="section-title secondary-title">ТЕХНОЛОГІЧНІ ПРОЦЕСИ ЗАМОРОЗКИ</h2>
+        </div>
+    </section>
+    <section class="tech-processes">
+        <div class="tech-container">
+            <!-- Ліва частина: Зображення процесу -->
+            <div class="tech-image">
+                <img src="img/washing.png" alt="Миття та сушка ягід" class="tech-main-image">
+            </div>
+    
+            <!-- Права частина: Список процесів -->
+            <div class="fresh-content">
+                <ul class="product-list fresh-list">
+                    <!-- Активний процес -->
+                    <li class="product-item active" data-tech="washing">
+                        <div class="product-name">МИТТЯ ТА СУШКА</div>
+                        <div class="product-details">
+                            <p>Процес переробки ягід, фруктів та овочів завжди починається з миття та сушіння продукції. В залежності від виду овочів та фруктів для миття ми використовуємо машини м'якого або жорсткого миття. <a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="blanching">
+                        <div class="product-name">БЛАНШУВАННЯ</div>
+                        <div class="product-details">
+                            <p>Процес швидкого прогрівання продуктів парою. Позбавляє від гіркоти та різкого запаху, дозволяє зберегти колір та аромату продукту.  Бланшована продукція не потребує подальшої кулінарної обробки.
+                                <a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="cleaning">
+                        <div class="product-name">ОЧИЩЕННЯ</div>
+                        <div class="product-details">
+                            <p>Процес глибокого очищення овочів від бруду та піску, залишків хімічних речовин, полірування та позбавлення продукції від кожухи, або шкірки.
+                                <a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="seed">
+                        <div class="product-name">ВИДАЛЕННЯ КІСТОЧКИ АБО СЕРЦЕВИНИ </div>
+                        <div class="product-details">
+                            <p>Наші кісточковибивні машини призначені для вилучення кісточок зі свіжих вишень та слив. Продуктивність виробництва — до 60 т на добу.
+
+                                Завод “HIGHBERRY” також  оснащений машиною  для видалення серцевини яблука.
+                                <a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="cutting">
+                        <div class="product-name">НАРІЗКА</div>
+                        <div class="product-details">
+                            <p>Можлива нарізка кубиками / соломкою / кільцями / скибочками
+
+                                Промислові шинкувальні машини призначені для нарізки кубиками, соломкою, кільцями  або  скибочками великого асортименту овочів та коренеплодів.
+                                
+                                Функція регулювання подрібнювання та широкий асортимент ножів й решіток дозволяє налаштовувати машини для  нарізки продуктів різним калібром та товщиною.
+                                <a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="glazing">
+                        <div class="product-name">ГЛАЗУРУВАННЯ</div>
+                        <div class="product-details">
+                            <p>Процес утворення тонкого шару льодяної глазурі на поверхні хрестоцвітих, а саме броколі та кольорової капусти. Це захищає продукт від виморожування та розпадання суцвіття. Дозволяє зберігати форму та колір близькими до свіжих протягом усього терміну зберігання. Після глазурування продукція зберігає високу якість та розсипчастість, добре фасується.<a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="screw">
+                        <div class="product-name">ШНЕКУВАННЯ</div>
+                        <div class="product-details">
+                            <p>Процес провіювання, відділення ягід від стебел, плодоніжок, хвостиків та листочків на шнеку.<a href="#" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="sorting">
+                        <div class="product-name">КАЛІБРУВАННЯ</div>
+                        <div class="product-details">
+                            <p>Наш завод обладнаний промисловими калібраторами та конвейєром, для механічного розділу на фракції сировини.  За їх допомогою, в процесі калібрування, йде відсів занадто мілких фракцій та відбувається сортування ягід,  фруктів та овочів.<a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item "data-tech="inspection">
+                        <div class="product-name">РУЧНА ІНСПЕКЦІЯ</div>
+                        <div class="product-details">
+                            <p>Інспекція — це найвідповідальніший із процесів, саме тому цю функцію довірено людині. Незамінні на виробництві професійні інспекційні столи-конвеєри зі спеціальним освітленням є запорукою якісного та успішного виконання заходів контролю.<a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="packing">
+                        <div class="product-name">ФАСУВАННЯ</div>
+                        <div class="product-details">
+                            <p>Особливе місце серед технологічних процесів займає фасування та пакування продукції. Пакувальне обладнання  є універсальним, це дозволяє упаковувати як свіжу, так і заморожену продукцію різних типів – овочі, фрукти, ягоди, суміші вагою від 400г до 25кг.<a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                    <li class="product-item" data-tech="freezing">
+                        <div class="product-name">ЗАМОРОЖУВАННЯ</div>
+                        <div class="product-details">
+                            <p>Заморожування — це ефективний метод консервування продуктів шляхом зниження їх температури нижче точки замерзання води (зазвичай -18 і нижче), що зупиняє розвиток мікроорганізмів та зберігає поживність.<a href="/production.html" class="details-link">ДІЗНАТИСЯ БІЛЬШЕ —</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="video-section">
+        <div class="container">
+            <div class="video-container">
+                <!-- Зображення-заглушка (thumbnail) -->
+                <img src="img/video-preview.png" alt="Відео про виробництво" class="video-thumb">
+                
+                <!-- Кнопка Play -->
+                <button class="play-button">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5V19L19 12L8 5Z" fill="white"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    <footer class="last">
+            <div class="footer-container">
+                <!-- Верхня частина з лого та формою -->
+                <div class="footer-top">
+                    <div class="footer-logo">
+                        <img src="img/icons/logo.svg" alt="Highberry Logo">
+                    </div>
+                    
+                    <form class="contact-form">
+                        <input type="text" placeholder="Підприємство*">
+                        <input type="text" placeholder="ПІБ*">
+                        <input type="tel" placeholder="Телефон*">
+                        <input type="email" placeholder="E-mail*">
+                        <div class="form-agreement">
+                            <input type="checkbox" id="agree">
+                            <label for="agree">Даю згоду на обробку, зберігання та використання особистих даних</label>
+                        </div>
+                        <button type="submit" class="submit-btn">НАДІСЛАТИ ЗАЯВКУ</button>
+                    </form>
+                </div>
+    
+                <!-- Нижня частина з контактами та меню -->
+                <div class="footer-bottom">
+                    <div class="footer-info">
+                        <p>ТОВ «ХАЙБЕРРІ»</p>
+                        <address>
+                            с.Старий Чорторийськ, вул.Сокола, 161-А<br>
+                            Волинська область, Маневицький район<br>
+                            Україна, 44636
+                        </address>
+                    </div>
+    
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#">КОМПАНІЯ</a></li>
+                            <li><a href="#">ВИРОЩУВАННЯ</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">ВИРОБНИЦТВО</a></li>
+                            <li><a href="#">ПРОДУКЦІЯ</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">НОВИНИ</a></li>
+                            <li><a href="#">КОНТАКТИ</a></li>
+                        </ul>
+                    </nav>
+    
+                    <div class="footer-contacts">
+                        <p>+380 67 550 5555</p>
+                        <p>+380 96 430 5555</p>
+                        <div class="socials-footer">
+                            <a href="#"><img src="/img/icons/ldin.svg" alt="in"></a>
+                            <a href="#"><img src="/img/icons/fb.svg" alt="fb"></a>
+                            <a href="#"><img src="/img/icons/in.svg" alt="ig"></a>
+                            <a href="#"><img src="/img/icons/yt.svg" alt="fb"></a>
+                            <a href="#"><img src="/img/icons/tt.svg" alt="ig"></a>
+                        </div>
+                    </div>
+                    <div class="footer-email">
+                        <p>Для україни</p>
+                        <p>Для інших країн</p>
+                        <div class="email-footer">
+                            <a href="#">high.berry@ukr.net</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="footer-copyright">
+                <span>HIGH-BERRY.COM 2022 ©</span>
+                <a href="#">Політика конфіденційності</a>
+            </div>
+    </footer>
+    <script>
+        document.querySelector('.burger-menu').addEventListener('click',function(){
+            this.classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('open');
+            document.querySelector('.nav').classList.toggle('open');
+        })
+        document.querySelector('.arrow-open-production').addEventListener('click',function(){
+            this.classList.toggle('active');
+            document.querySelector('.production').classList.toggle('open');
+        })
+        document.querySelector('.arrow-open-news').addEventListener('click',function(){
+            this.classList.toggle('active');
+            document.querySelector('.news').classList.toggle('open');
+        })
+        document.addEventListener('DOMContentLoaded', () => {
+  initFreshSlider();
+  initTechSlider();
+  initFrozenSlider();
+});
+
+/* =========================
+   CORE HELPERS
+========================= */
+
+function setActive(items, activeItem) {
+  items.forEach(i => i.classList.remove('active'));
+  activeItem.classList.add('active');
+}
+
+function fadeImage(img, newSrc, delay = 200) {
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = newSrc;
+    img.style.opacity = '1';
+  }, delay);
+}
+function initFreshSlider() {
+  const items = document.querySelectorAll('.fresh-list .product-item');
+  const img = document.querySelector('.fresh-image img');
+
+  if (!items.length || !img) return;
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const id = item.dataset.id;
+      const data = products?.[id];
+
+      if (!data) return;
+
+      setActive(items, item);
+      fadeImage(img, data.img);
+    });
+  });
+}
+function initTechSlider() {
+  const items = document.querySelectorAll('[data-tech]');
+  const img = document.querySelector('.tech-main-image');
+
+  if (!items.length || !img) return;
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const id = item.dataset.tech;
+      const src = techImages?.[id];
+
+      if (!src) return;
+
+      setActive(items, item);
+      fadeImage(img, src);
+    });
+  });
+}
+function initFrozenSlider() {
+  const items = document.querySelectorAll('.product-item-carusel');
+  const images = Array.from(document.querySelectorAll('.stack-carusel-img'));
+
+  if (!items.length || !images.length) return;
+
+  let order = [...images];
+
+  function render() {
+    order.forEach((img, index) => {
+      const offsetY = index * 4;
+      const offsetX = index * 20;
+      const rotate = index * 1.5;
+      const scale = 1 - index * 0.03;
+
+      img.style.zIndex = 100 - index;
+      img.style.transform = `
+        translateY(${offsetY}px)
+        translateX(${offsetX}px)
+        rotate(${rotate}deg)
+        scale(${scale})
+      `;
+
+      img.classList.toggle('active', index === 0);
+    });
+  }
+
+  render();
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      setActive(items, item);
+
+      const target = item.dataset.target;
+      const clicked = order.find(img => img.dataset.id === target);
+
+      if (!clicked) return;
+
+      order = [
+        clicked,
+        ...order.filter(i => i !== clicked)
+      ];
+
+      render();
+    });
+  });
+}
+const products = {
+  strawberry: { img: 'img/strawberry.png' },
+  raspberry: { img: 'img/raspberry.png' },
+  onion: { img: 'img/onion.png' },
+  cherry: { img: 'img/cherry.png' },
+  broccoli: { img: 'img/broccoli.png' },
+  cauliflower: { img: 'img/cauliflower.png' },
+  brussel: { img: 'img/brussel.png' },
+  pepper: { img: 'img/pepper.png' },
+  tomato: { img: 'img/tomato.png' },
+  carrot: { img: 'img/carrot.png' }
+};
+const techImages = {
+  washing: 'img/washing.png',
+  blanching: 'img/blanching.png',
+  cleaning: 'img/cleaning.png',
+  seed: 'img/seed.png',
+  cutting: 'img/cutting.png',
+  glazing: 'img/glazing.jpg',
+  screw: 'img/screw.png',
+  sorting: 'img/sorting.png',
+  inspection: 'img/inspection.png',
+  packing: 'img/packing.png',
+  freezing: 'img/freezing.png'
+};
+    </script>
+</body>
+</html>

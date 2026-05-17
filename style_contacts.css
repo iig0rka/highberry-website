@@ -1,0 +1,207 @@
+/* --- БАЗОВІ СТИЛІ --- */
+html { font-size: 16px; }
+body { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; color: #333333; background-color: #fcfcfc; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: inherit; }
+/* --- HERO СЕКЦІЯ (СІРИЙ БЛОК З ЗАГОЛОВКОМ) --- */
+.hero-contacts {  /* Фірмовий матовий сірий відтінок з макета */
+    min-height: 50vh; display: flex; flex-direction: column; justify-content: space-between; position: relative; padding-bottom: 40px;background-color: rgba(13, 12, 12, 0.5); }
+.transparent-header { background-color: transparent !important; }
+.contacts-title-container { text-align: center; color: #ffffff; margin-top: auto; }
+.contacts-title-container h1 { font-size: 2.2rem; font-weight: normal; letter-spacing: 3px; margin: 0 0 15px 0; }
+.title-line { width: 250px; height: 1px; background-color: rgba(255, 255, 255, 0.6); margin: 0 auto; }
+/* Стандартні елементи верхнього меню */
+.header {position: fixed;z-index: 5;width: 100vw;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 10vh; min-height: 60px; background-color: #ffffff; padding: 0 5%;
+}
+.header-left, .header-right { display: flex; align-items: center; gap: 50px; }
+.logo-mini { width: 65px; height: auto; }
+.catalog-link { color: #6AB354;font-size: 25px; text-decoration: none; font-size: 0.875rem; font-weight: bold; border-bottom: 2px solid #ffffff; padding-bottom: 2px; }
+.lang-switch { color: #6AB354; font-size: 0.875rem;font-size: 25px; }
+.lang-switch a { text-decoration: none; color: #6AB354;font-size: 25px; }
+.lang-switch .active-lang { font-weight: bold; color: #6AB354; }
+/* --- ГОЛОВНА КАРТКА КОНТАКТІВ --- */
+.contacts-card-section { padding-bottom: 60px; background-color: #fcfcfc; }
+.contacts-main-card { max-width: 920px; width: calc(100% - 40px); margin: -60px auto 40px auto; /* Заїзд білої плашки на сіру секцію Hero */
+    background-color: #ffffff; border-radius: 12px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06); padding: 50px 60px; display: flex; justify-content: space-between; position: relative; z-index: 5; }
+/* ЛІВА ЧАСТИНА: Список елементів */
+.contacts-info-side { width: 62%; display: flex; flex-direction: column; gap: 35px; }
+.contact-row-item { display: flex; align-items: flex-start; gap: 25px; }
+.contact-icon-circle { width: 46px; height: 46px; background-color: #6AB354; /* Зелений фірмовий кружечок */
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-icon-circle img { width: 22px; height: 22px; }
+.contact-text-content { text-align: left; color: #444444; font-size: 0.95rem; line-height: 1.6; }
+.contact-text-content h4 { color: #6AB354; font-size: 1.15rem; margin: 0 0 8px 0; font-weight: normal; letter-spacing: 0.5px; }
+.contact-text-content p { margin: 0; }
+.sub-green { color: #6AB354; font-weight: bold; margin-bottom: 4px !important; }
+.phone-highlight { font-size: 1.2rem; font-weight: bold; color: #222222; }
+/* ПРАВА ЧАСТИНА: Вертикальний розділювач та Логотип */
+.contacts-logo-side { width: 33%; display: flex; align-items: stretch; position: relative; }
+.vertical-divider { position: absolute; left: 0; top: 10px; bottom: 10px; width: 1px; background-color: #e8e8e8; /* Тонка сіра вертикальна лінія розподілу */ }
+.big-brand-logo { width: 100%; display: flex; align-items: center; justify-content: center; padding-left: 40px; }
+.big-brand-logo img { max-width: 160px; width: 100%; height: auto; }
+/* Маленький маркер по центру під картою */
+.bottom-mini-marker { text-align: center; margin: 40px 0 20px 0; }
+.bottom-mini-marker img { width: 20px; opacity: 0.8; }
+/* --- БОКОВЕ МЕНЮ ТА НАВІГАЦІЯ --- */
+.burger-menu {right: 450px;top:36px; z-index: 1000; position: fixed; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.burger-menu.active { position: fixed; top: 27px; right: 30px; }
+.burger-menu span, .burger-menu::before, .burger-menu::after { content: ''; position: absolute; height: 2px; width: 24px; background-color: #6AB354; transition: transform 0.3s, opacity 0.3s; }
+.burger-menu::before { transform: translateY(-8px); }
+.burger-menu::after { transform: translateY(8px); }
+.burger-menu.active span { opacity: 0; }
+.burger-menu.active::before { transform: rotate(45deg); }
+.burger-menu.active::after { transform: rotate(-45deg); }
+.nav { display: block; position: fixed; /* Краще fixed для повноекранного меню */
+    top: 0; right: 0; width: 28vw; height: 100vh; background-color: #f8f8f8; z-index: 40; /* Початковий стан — сховано */
+    transform: translateX(100%); /* Анімація закриття (спрацює, коли приберете клас .open) */
+    animation: closeNav 750ms ease forwards; }
+.nav.open { /* Анімація відкриття */
+    animation: openNav 750ms ease forwards; }
+/* Анімація появи */
+@keyframes openNav {
+ from { transform: translateX(100%); }
+to { transform: translateX(0); }
+ }
+/* Анімація зникнення */
+@keyframes closeNav {
+ from { transform: translateX(0); }
+to { transform: translateX(100%); }
+ }
+.nav { position: fixed; top: 0; right: 0; width: 28vw; height: 100vh; background-color: #FFFFFF; z-index: 40; padding: 30px; box-sizing: border-box; display: flex; flex-direction: column; color: #8CC63F; /* Зелений колір тексту з макета */
+    font-family: 'Roboto', sans-serif; transform: translateX(100%); transition: transform 0.5s ease; }
+.nav.open { transform: translateX(0); }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); /* Напівпрозорий чорний колір */
+    z-index: 30; /* Менше, ніж у .nav (який має 100), але більше, ніж у контенту */
+    opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
+/* Стан, коли оверлей активний */
+.overlay.open { opacity: 1; visibility: visible; }
+/* Хедер меню (іконки та мови) */
+.nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+.lang-switch-mobile { font-size: 14px; font-weight: bold; }
+.home-btn { transform: translateX(-50px); width: 20px;height: 20px;}
+/* Пункти меню */
+.nav-menu { list-style: none; padding: 0; margin: 0; }
+.nav-menu li { opacity: 0; /* Спочатку невидимі */
+    transform: translateX(100px); /* Зміщені вправо */ }
+.nav.open .nav-menu li { animation: slideIn 0.5s ease forwards; }
+@keyframes slideIn {
+ to { opacity: 1; transform: translateX(0); }
+ }
+/* Каскадна поява (затримка для кожного пункту) */
+.nav.open .nav-menu li:nth-child(1) { animation-delay: 0.1s; }
+.nav.open .nav-menu li:nth-child(2) { animation-delay: 0.2s; }
+.nav.open .nav-menu li:nth-child(3) { animation-delay: 0.3s; }
+.nav.open .nav-menu li:nth-child(4) { animation-delay: 0.4s; }
+.nav.open .nav-menu li:nth-child(5) { animation-delay: 0.5s; }
+.nav.open .nav-menu li:nth-child(6) { animation-delay: 0.6s; }
+.nav.open .nav-menu li:nth-child(7) { animation-delay: 0.7s; }
+.nav.open .nav-menu li:nth-child(8) { animation-delay: 0.8s; }
+.nav-menu > li { font-size: 24px; margin-bottom: 15px; text-transform: uppercase; cursor: pointer; align-items: center; gap: 10px; }
+nav a { color: #8CC63F; text-decoration: none; }
+.arrow { font-size: 16px; }
+/* Підменю */
+.production, .news { display: none; list-style: none; }
+.production li, .news li { margin: 10px 20px 10px ; }
+.production.open, .news.open { display:contents; text-transform: capitalize; }
+.arrow-open-production.active,.arrow-open-news.active { transform: rotate(90deg); /* Або 90deg, залежно від макета */ }
+.submenu li { font-size: 20px; margin-bottom: 10px; text-transform: none; /* Fresh, Frozen пишуться не капсом */ }
+/* Контакти внизу меню */
+.nav-footer { margin-top: auto; font-size: 13px; font-weight: bold; }
+.nav-divider { height: 1px; background-color: #8CC63F; margin-bottom: 25px; opacity: 0.5; }
+.footer-contacts-row { display: flex; justify-content: space-between; line-height: 1.8; }
+.email { margin-top: 5px; }
+.regions { text-align: right; font-weight: normal; }
+/* --- ГОЛОВНИЙ ФУТЕР --- */
+.last { background-image: url("img/footer-bg.png"); background-size: cover; background-position: center; color: white; position: relative; overflow: hidden; }
+.last::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0.0) 100%); z-index: 1; }
+.footer-container { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; margin-bottom: 40px; }
+.footer-logo img { width: 100%; max-width: 220px; }
+.contact-form { background: none; width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 15px; }
+.contact-form input { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.2); padding: 12px; color: white; border-radius: 4px; }
+.contact-form input::placeholder { color: #e0e0e0; font-size: 0.95rem; }
+.form-agreement { display: flex; align-items: flex-start; gap: 10px; }
+.form-agreement input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; margin: 0; }
+.form-agreement label { font-size: 0.75rem; line-height: 1.4; color: #e0e0e0; }
+.submit-btn { background: transparent; border: 1px solid white; color: white; padding: 12px; cursor: pointer; margin-top: 10px; width: 100%; max-width: 200px; font-weight: bold; transition: background 0.3s; }
+.submit-btn:hover { background-color: #ffffff; color: #333333; }
+.footer-bottom { display: grid; grid-template-columns: 1.2fr 1.5fr 1fr 1fr; gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; font-size: 0.95rem; }
+.footer-info p { margin: 0 0 10px 0; font-size: 1.3rem; font-weight: bold; }
+.footer-info address { font-style: normal; line-height: 1.5; color: #ccc; }
+.footer-nav { display: flex; justify-content: space-between; gap: 15px; }
+.footer-nav ul { list-style: none; padding: 0; margin: 0; }
+.footer-nav a { color: white; text-decoration: none; display: block; margin-bottom: 12px; opacity: 0.8; font-size: 0.9rem; }
+.footer-nav a:hover { opacity: 1; color: #6AB354; }
+.footer-contacts p { margin: 0 0 10px 0; font-weight: bold; }
+.socials-footer { display: flex; gap: 12px; margin-top: 20px; }
+.socials-footer img { width: 24px; height: 24px; opacity: 0.8; }
+.email-footer a { color: #f8f8f8; text-decoration: none; }
+.footer-copyright { background-color: rgba(0, 0, 0, 0.8); min-height: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); padding: 10px 5%; }
+.footer-copyright a { color: #f8f8f8; }
+/* ==========================================================================
+   --- АДАПТИВНІСТЬ ДЛЯ ЕКРАНІВ МЕНШЕ 768px ---
+   ========================================================================== */
+@media (max-width: 768px) {
+ html { font-size: 14px; }
+.catalog-link { display: none; }
+.hero-contacts { min-height: 25vh; }
+.contacts-title-container h1 { font-size: 1.8rem; }
+/* Перебудова картки контактів у вертикальний стек */
+    .contacts-main-card { flex-direction: column; padding: 30px 20px; gap: 40px; margin-top: -40px; }
+.contacts-info-side { width: 100%; gap: 30px; }
+/* Приховуємо розділювач та адаптуємо блок логотипу на мобільних */
+    .contacts-logo-side { width: 100%; justify-content: center; }
+.vertical-divider { display: none; }
+.big-brand-logo { padding-left: 0; }
+.big-brand-logo img { max-width: 130px; }
+/* Мобільний футер */
+    .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+.contact-form { max-width: 100%; }
+.submit-btn { max-width: 100%; }
+.footer-bottom { grid-template-columns: 100%; text-align: center; gap: 35px; }
+.footer-nav { flex-direction: column; gap: 25px; }
+.socials-footer { justify-content: center; }
+.footer-copyright { flex-direction: column; gap: 10px; text-align: center; }
+ }
+/* --- ВИПРАВЛЕННЯ ХЕДЕРА ТА НАКЛАДАННЯ КАРТКИ --- */
+/* --- СТИЛІ ДЛЯ НОВОЇ ФОРМИ ЗЕЛЕНОГО БОКСУ --- */
+.contacts-feedback-section { padding: 40px 20px 80px 20px; background-color: #fcfcfc; display: flex; justify-content: center; }
+.feedback-border-box { max-width: 650px; width: 100%; background-color: #ffffff; border: 1px solid #6AB354; /* Зелена тонка рамка */
+    border-radius: 12px; padding: 40px 50px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+.feedback-border-box h2 { color: #6AB354; font-size: 1.25rem; font-weight: normal; letter-spacing: 1px; line-height: 1.5; margin-top: 0; margin-bottom: 35px; }
+.feedback-border-box h2 span { font-size: 1.15rem; }
+.actual-feedback-form { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.actual-feedback-form .input-wrap { width: 100%; margin-bottom: 15px; }
+.actual-feedback-form input[type="text"],
+.actual-feedback-form input[type="tel"],
+.actual-feedback-form input[type="email"] { width: 100%; background-color: #ffffff; border: 1px solid #c2e29d; /* Світло-зелена рамка інпутів */
+    padding: 14px 15px; font-size: 1rem; color: #333333; border-radius: 4px; outline: none; box-sizing: border-box; }
+.actual-feedback-form input::placeholder { color: #333333; /* Темний плейсхолдер як на макеті */ }
+.form-notice { width: 100%; text-align: left; padding-left: 5px; margin-top: 5px; margin-bottom: 15px; }
+.form-notice p { margin: 0; font-size: 0.85rem; color: #555555; }
+/* Кастомна стилізація чекбокса */
+.custom-checkbox-group { display: flex; align-items: center; gap: 15px; width: 100%; text-align: left; margin-bottom: 35px; }
+.custom-checkbox-group input[type="checkbox"] { position: relative; width: 24px; height: 24px; background-color: #6AB354; border: none; appearance: none; /* Ховаємо дефолтний чекбокс */
+    -webkit-appearance: none; cursor: pointer; border-radius: 2px; flex-shrink: 0; }
+.custom-checkbox-group input[type="checkbox"]:checked::before { content: '✓'; position: absolute; color: #ffffff; font-size: 16px; font-weight: bold; left: 6px; top: 0px; }
+.custom-checkbox-group label { font-size: 0.9rem; color: #333333; line-height: 1.4; cursor: pointer; }
+/* Центральна кнопка відправки */
+.page-form-submit-btn { background-color: transparent; border: 1px solid #6AB354; color: #6AB354; padding: 15px 45px; font-size: 0.95rem; letter-spacing: 1px; cursor: pointer; border-radius: 4px; transition: background 0.3s, color 0.3s; font-weight: normal; }
+.page-form-submit-btn:hover { background-color: #6AB354; color: #ffffff; }
+/* Мобільна адаптація для форми */
+@media (max-width: 768px) {
+ .feedback-border-box { padding: 30px 20px; }
+.custom-checkbox-group { align-items: flex-start; }
+.page-form-submit-btn { width: 100%; }
+ }
+ @media (max-width: 650px){
+    .lang-switch{
+     display: none;
+    }
+    .burger-menu{
+     right: 200px;
+    }
+    .nav.open{
+     width: 100vw;   }
+  }
